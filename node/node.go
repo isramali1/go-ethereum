@@ -44,6 +44,8 @@ type Node struct {
 	eventmux *event.TypeMux // Event multiplexer used between the services of a stack
 	config   *Config
 	accman   *accounts.Manager
+	// //--------------------------------------------------------------> added SCGuard
+	//scg *scguard.SCGuard // SCG manages on-chain selection & runtime protection for smart contracts
 
 	ephemeralKeystore string            // if non-empty, the key directory that will be removed by Stop
 	instanceDirLock   fileutil.Releaser // prevents concurrent use of instance directory
