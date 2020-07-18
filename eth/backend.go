@@ -22,7 +22,6 @@ import (
 	"fmt"
 	"math/big"
 	"runtime"
-	scguard "selectionManager"
 	"sync"
 	"sync/atomic"
 
@@ -231,11 +230,6 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	// //--------------------------------------------------------------> added SCGuard
-	scguard.SCG = scguard.NewSCGuard(eth.etherbase) // create a new SCG & set candidate address to etherbase (after/when creating a new Ethereum)
-
-	// //--------------------------------------------------------------> ended SCGuard
 
 	return eth, nil
 }

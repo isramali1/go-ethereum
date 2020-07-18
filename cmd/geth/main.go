@@ -27,9 +27,6 @@ import (
 	"strings"
 	"time"
 
-	//"runtime-protection/scguard"
-	scguard "selectionManager"
-
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/cmd/utils"
@@ -43,8 +40,6 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/node"
-
-	//"github.com/ethereum/go-ethereum/scguard"
 	gopsutil "github.com/shirou/gopsutil/mem"
 	cli "gopkg.in/urfave/cli.v1"
 )
@@ -371,10 +366,6 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 	// Unlock any account specifically requested
 	unlockAccounts(ctx, stack)
 
-	// //--------------------------------------------------------------> added SCGuard
-	scguard.Test()
-
-	// //--------------------------------------------------------------> ended SCGuard
 	// Register wallet event handlers to open and auto-derive wallets
 	events := make(chan accounts.WalletEvent, 16)
 	stack.AccountManager().Subscribe(events)
